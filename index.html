@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PREPA TCF Canada — Expert à Tunis | Coaching B2/C1</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C8392B;
+    --red-dark: #9B2C1F;
+    --cream: #FAF7F2;
+    --ink: #1A1410;
+    --gold: #C9962A;
+    --gold-light: #F0D080;
+    --muted: #7A6E65;
+    --border: #E8E0D5;
+  }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+font-family: ‘DM Sans’, sans-serif;
+background: var(–cream);
+color: var(–ink);
+overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+display: flex; justify-content: space-between; align-items: center;
+padding: 1.2rem 2.5rem;
+background: rgba(250,247,242,0.92);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid var(–border);
+}
+.nav-logo {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.1rem; font-weight: 900; letter-spacing: 0.04em;
+color: var(–ink);
+text-decoration: none;
+}
+.nav-logo span { color: var(–red); }
+.nav-cta {
+background: var(–red); color: #fff;
+border: none; padding: 0.6rem 1.4rem;
+font-family: ‘DM Sans’, sans-serif; font-size: 0.85rem; font-weight: 600;
+cursor: pointer; text-decoration: none;
+letter-spacing: 0.04em; text-transform: uppercase;
+transition: background 0.2s;
+}
+.nav-cta:hover { background: var(–red-dark); }
+
+/* HERO */
+.hero {
+min-height: 100vh;
+display: grid;
+grid-template-columns: 1fr 1fr;
+position: relative;
+overflow: hidden;
+}
+
+.hero-left {
+background: var(–ink);
+padding: 10rem 4rem 4rem 5rem;
+display: flex; flex-direction: column; justify-content: center;
+position: relative;
+overflow: hidden;
+}
+
+.hero-left::before {
+content: ‘’;
+position: absolute; top: -80px; right: -80px;
+width: 300px; height: 300px;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(200,57,43,0.25) 0%, transparent 70%);
+}
+
+.hero-badge {
+display: inline-flex; align-items: center; gap: 0.5rem;
+background: rgba(201,150,42,0.15); border: 1px solid rgba(201,150,42,0.4);
+color: var(–gold-light);
+padding: 0.4rem 1rem; font-size: 0.75rem; font-weight: 600;
+letter-spacing: 0.1em; text-transform: uppercase;
+margin-bottom: 2rem; width: fit-content;
+}
+.hero-badge::before { content: ‘★’; font-size: 0.7rem; }
+
+.hero-h1 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(3rem, 5vw, 4.5rem);
+font-weight: 900; line-height: 1.05;
+color: #fff;
+margin-bottom: 0.4rem;
+}
+.hero-h1 em {
+color: var(–red);
+font-style: italic;
+}
+
+.hero-subtitle {
+font-size: 1.05rem; font-weight: 300;
+color: rgba(255,255,255,0.6);
+line-height: 1.6;
+margin-top: 1.5rem; margin-bottom: 2.5rem;
+max-width: 380px;
+}
+
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.btn-primary {
+background: var(–red); color: #fff;
+padding: 1rem 2rem; text-decoration: none;
+font-weight: 600; font-size: 0.9rem;
+letter-spacing: 0.04em; text-transform: uppercase;
+transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-primary:hover { background: var(–red-dark); transform: translateY(-2px); }
+
+.btn-secondary {
+border: 1px solid rgba(255,255,255,0.25); color: #fff;
+padding: 1rem 2rem; text-decoration: none;
+font-weight: 500; font-size: 0.9rem;
+transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.06); }
+
+.hero-stats {
+display: flex; gap: 2.5rem; margin-top: 3.5rem;
+padding-top: 2.5rem;
+border-top: 1px solid rgba(255,255,255,0.1);
+}
+.stat-num {
+font-family: ‘Playfair Display’, serif;
+font-size: 2rem; font-weight: 900; color: var(–gold-light);
+display: block;
+}
+.stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.08em; }
+
+.hero-right {
+background: var(–cream);
+display: flex; flex-direction: column; justify-content: center;
+padding: 10rem 4rem 4rem 4rem;
+position: relative;
+}
+
+.hero-right::after {
+content: ‘TCF’;
+position: absolute; bottom: -20px; right: -20px;
+font-family: ‘Playfair Display’, serif;
+font-size: 14rem; font-weight: 900;
+color: rgba(200,57,43,0.05);
+line-height: 1; user-select: none; pointer-events: none;
+}
+
+.feature-card {
+background: #fff;
+border: 1px solid var(–border);
+padding: 2rem;
+margin-bottom: 1.2rem;
+display: flex; gap: 1.2rem; align-items: flex-start;
+transition: all 0.2s;
+position: relative;
+overflow: hidden;
+}
+.feature-card:hover {
+border-color: var(–red);
+transform: translateX(4px);
+box-shadow: -4px 0 0 var(–red);
+}
+.feature-icon {
+font-size: 1.8rem;
+width: 52px; height: 52px;
+background: var(–cream);
+display: flex; align-items: center; justify-content: center;
+flex-shrink: 0;
+}
+.feature-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.3rem; }
+.feature-desc { font-size: 0.85rem; color: var(–muted); line-height: 1.5; }
+
+/* SECTION TEMPLATE */
+section { padding: 6rem 5rem; }
+.section-label {
+font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em;
+text-transform: uppercase; color: var(–red);
+margin-bottom: 0.8rem; display: block;
+}
+.section-h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 900;
+line-height: 1.1; margin-bottom: 1rem;
+}
+
+/* PROGRAMME */
+.programme {
+background: var(–ink);
+color: #fff;
+padding: 6rem 5rem;
+}
+.programme .section-h2 { color: #fff; }
+
+.prog-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 1.5rem;
+margin-top: 3rem;
+}
+.prog-card {
+border: 1px solid rgba(255,255,255,0.1);
+padding: 2.2rem;
+position: relative;
+transition: all 0.3s;
+}
+.prog-card:hover {
+border-color: var(–red);
+background: rgba(200,57,43,0.05);
+}
+.prog-num {
+font-family: ‘Playfair Display’, serif;
+font-size: 3.5rem; font-weight: 900;
+color: rgba(255,255,255,0.06);
+position: absolute; top: 1rem; right: 1.5rem;
+line-height: 1;
+}
+.prog-icon { font-size: 1.8rem; margin-bottom: 1.2rem; display: block; }
+.prog-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.6rem; color: #fff; }
+.prog-text { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+/* TESTIMONIALS / RESULTS */
+.results {
+background: var(–cream);
+padding: 6rem 5rem;
+}
+.results-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1.5rem;
+margin-top: 3rem;
+}
+.result-card {
+background: #fff;
+border: 1px solid var(–border);
+padding: 2rem 2.2rem;
+}
+.result-score {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.6rem; font-weight: 900;
+color: var(–red); margin-bottom: 0.5rem;
+}
+.result-name { font-weight: 600; font-size: 0.9rem; }
+.result-detail { font-size: 0.82rem; color: var(–muted); margin-top: 0.3rem; }
+.result-quote {
+font-size: 0.88rem; color: #444;
+font-style: italic; line-height: 1.6;
+margin-top: 1rem;
+padding-top: 1rem;
+border-top: 1px solid var(–border);
+}
+
+/* FAQ */
+.faq { padding: 6rem 5rem; background: #fff; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 3rem; margin-top: 3rem; }
+.faq-item { border-bottom: 1px solid var(–border); padding-bottom: 1.5rem; }
+.faq-q { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.6rem; display: flex; gap: 0.7rem; align-items: flex-start; }
+.faq-q::before { content: ‘?’; background: var(–red); color: #fff; font-size: 0.7rem; font-weight: 700; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.1rem; }
+.faq-a { font-size: 0.88rem; color: var(–muted); line-height: 1.6; padding-left: 1.7rem; }
+
+/* CTA SECTION */
+.cta-section {
+background: var(–red);
+color: #fff;
+padding: 6rem 5rem;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+.cta-section::before {
+content: ‘’;
+position: absolute; inset: 0;
+background: repeating-linear-gradient(
+45deg, transparent, transparent 20px,
+rgba(255,255,255,0.02) 20px, rgba(255,255,255,0.02) 21px
+);
+}
+.cta-section .section-label { color: rgba(255,255,255,0.6); }
+.cta-section .section-h2 { color: #fff; margin-bottom: 1.5rem; }
+.cta-section p { font-size: 1.05rem; color: rgba(255,255,255,0.75); margin-bottom: 2.5rem; }
+.btn-white {
+background: #fff; color: var(–red);
+padding: 1.1rem 2.5rem; text-decoration: none;
+font-weight: 700; font-size: 0.95rem;
+letter-spacing: 0.04em; text-transform: uppercase;
+display: inline-flex; align-items: center; gap: 0.5rem;
+transition: all 0.2s;
+}
+.btn-white:hover { background: var(–cream); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+.cta-contacts {
+display: flex; gap: 1.5rem; justify-content: center; margin-top: 2rem;
+flex-wrap: wrap;
+}
+.cta-contact-item {
+display: flex; align-items: center; gap: 0.5rem;
+color: rgba(255,255,255,0.7); font-size: 0.88rem;
+text-decoration: none;
+}
+.cta-contact-item:hover { color: #fff; }
+.cta-contact-item .icon { font-size: 1rem; }
+
+/* FOOTER */
+footer {
+background: var(–ink); color: rgba(255,255,255,0.4);
+padding: 2.5rem 5rem;
+display: flex; justify-content: space-between; align-items: center;
+font-size: 0.78rem;
+flex-wrap: wrap; gap: 1rem;
+}
+footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+footer a:hover { color: #fff; }
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.hero-left > * { animation: fadeUp 0.7s ease both; }
+.hero-badge { animation-delay: 0.1s; }
+.hero-h1 { animation-delay: 0.2s; }
+.hero-subtitle { animation-delay: 0.3s; }
+.hero-actions { animation-delay: 0.4s; }
+.hero-stats { animation-delay: 0.5s; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+.hero { grid-template-columns: 1fr; }
+.hero-left { padding: 8rem 2rem 3rem; }
+.hero-right { padding: 3rem 2rem; }
+.hero-right::after { display: none; }
+section, .programme, .results, .faq, .cta-section { padding: 4rem 2rem; }
+.prog-grid { grid-template-columns: 1fr; }
+.results-grid, .faq-grid { grid-template-columns: 1fr; }
+nav { padding: 1rem 1.5rem; }
+footer { padding: 2rem; flex-direction: column; text-align: center; }
+}
+
+/* WhatsApp float button */
+.wa-float {
+position: fixed; bottom: 2rem; right: 2rem;
+background: #25D366; color: #fff;
+width: 58px; height: 58px; border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+font-size: 1.6rem; text-decoration: none;
+box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+z-index: 200;
+transition: transform 0.2s;
+animation: pulse 2.5s infinite;
+}
+.wa-float:hover { transform: scale(1.1); }
+@keyframes pulse {
+0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+50% { box-shadow: 0 4px 32px rgba(37,211,102,0.7); }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav>
+  <a href="#" class="nav-logo">PREPA<span>TCF</span></a>
+  <a href="https://wa.link/g27f11" target="_blank" class="nav-cta">Commencer →</a>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Expert certifié · Tunis</div>
+    <h1 class="hero-h1">
+      Décrochez votre<br>
+      <em>B2 / C1</em><br>
+      au TCF Canada
+    </h1>
+    <p class="hero-subtitle">
+      Coaching intensif et personnalisé avec un spécialiste TCF.
+      Méthodologie éprouvée pour atteindre le niveau requis pour votre dossier d'immigration.
+    </p>
+    <div class="hero-actions">
+      <a href="https://wa.link/g27f11" target="_blank" class="btn-primary">
+        💬 Démarrer sur WhatsApp
+      </a>
+      <a href="#programme" class="btn-secondary">
+        Voir le programme
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">B2+</span>
+        <span class="stat-label">Niveau cible</span>
+      </div>
+      <div>
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Personnalisé</span>
+      </div>
+      <div>
+        <span class="stat-num">2</span>
+        <span class="stat-label">Versions TCF</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="feature-card">
+      <div class="feature-icon">🎯</div>
+      <div>
+        <div class="feature-title">Expertise TCF Pure</div>
+        <div class="feature-desc">Spécialiste des épreuves orales et écrites. Maîtrise complète du format, des critères et des attentes du jury.</div>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📈</div>
+      <div>
+        <div class="feature-title">Résultats mesurables</div>
+        <div class="feature-desc">Progression suivie à chaque session. Objectif clair : atteindre le NCLC requis pour votre programme d'immigration.</div>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🕐</div>
+      <div>
+        <div class="feature-title">Flexibilité totale</div>
+        <div class="feature-desc">Cours en ligne ou en présentiel à Tunis. Planning adapté à votre rythme et à votre date d'examen.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMME -->
+
+<div class="programme" id="programme">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <span class="section-label">Programme de préparation</span>
+    <h2 class="section-h2">Ce que vous apprenez</h2>
+    <div class="prog-grid">
+      <div class="prog-card">
+        <span class="prog-num">01</span>
+        <span class="prog-icon">🎤</span>
+        <div class="prog-title">Expression Orale</div>
+        <p class="prog-text">Simulations des tâches réelles. Techniques pour structurer, enrichir et fluidifier votre prise de parole en situation d'examen.</p>
+      </div>
+      <div class="prog-card">
+        <span class="prog-num">02</span>
+        <span class="prog-icon">✍️</span>
+        <div class="prog-title">Expression Écrite</div>
+        <p class="prog-text">Entraînement sur les sujets des sessions précédentes. Correction personnalisée avec feedback immédiat et grille d'évaluation.</p>
+      </div>
+      <div class="prog-card">
+        <span class="prog-num">03</span>
+        <span class="prog-icon">👂</span>
+        <div class="prog-title">Compréhension & Lecture</div>
+        <p class="prog-text">Stratégies de lecture rapide, repérage des informations clés, gestion du temps pour maximiser votre score.</p>
+      </div>
+      <div class="prog-card">
+        <span class="prog-num">04</span>
+        <span class="prog-icon">🔍</span>
+        <div class="prog-title">Pièges à éviter</div>
+        <p class="prog-text">Les erreurs les plus fréquentes décryptées et corrigées. Astuces concrètes pour gagner des points facilement.</p>
+      </div>
+      <div class="prog-card">
+        <span class="prog-num">05</span>
+        <span class="prog-icon">📅</span>
+        <div class="prog-title">Simulations Complètes</div>
+        <p class="prog-text">Sessions blanches chronométrées dans les conditions réelles de l'examen pour éliminer le stress le jour J.</p>
+      </div>
+      <div class="prog-card">
+        <span class="prog-num">06</span>
+        <span class="prog-icon">🍁</span>
+        <div class="prog-title">TCF Canada & Québec</div>
+        <p class="prog-text">Préparation aux deux versions selon votre projet : immigration fédérale (Express Entry) ou provinciale (Québec).</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTS -->
+
+<div class="results">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <span class="section-label">Ils ont réussi</span>
+    <h2 class="section-h2">Des résultats qui parlent</h2>
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-score">NCLC 9 — C1</div>
+        <div class="result-name">Sana B. · Ariana</div>
+        <div class="result-detail">Expression orale & écrite</div>
+        <div class="result-quote">"Grâce aux simulations et aux corrections détaillées, j'ai gagné 2 niveaux en 6 semaines. Mon dossier Express Entry est maintenant complet."</div>
+      </div>
+      <div class="result-card">
+        <div class="result-score">NCLC 8 — B2+</div>
+        <div class="result-name">Mohamed A. · Tunis</div>
+        <div class="result-detail">Programme Canada fédéral</div>
+        <div class="result-quote">"Le coaching était vraiment ciblé sur mes faiblesses. Je n'aurais pas obtenu ce résultat sans la méthode et la rigueur de Houcine."</div>
+      </div>
+      <div class="result-card">
+        <div class="result-score">NCLC 9 — C1</div>
+        <div class="result-name">Amira K. · La Marsa</div>
+        <div class="result-detail">Immigration Québec</div>
+        <div class="result-quote">"Préparation complète en ligne, flexible avec mon emploi du temps. Les astuces pour l'oral m'ont fait gagner énormément de points."</div>
+      </div>
+      <div class="result-card">
+        <div class="result-score">NCLC 7 → 9</div>
+        <div class="result-name">Youssef M. · Sfax</div>
+        <div class="result-detail">2 passages, progression +2</div>
+        <div class="result-quote">"Après un premier passage décevant, j'ai suivi la préparation et j'ai progressé de 2 niveaux entiers. Méthode vraiment efficace."</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+
+<div class="faq">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <span class="section-label">Questions fréquentes</span>
+    <h2 class="section-h2">Tout ce que vous voulez savoir</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q">Combien de temps dure la préparation ?</div>
+        <div class="faq-a">C'est entièrement sur mesure. La durée dépend de votre niveau actuel et de votre date d'examen. Un bilan initial permet de définir le programme optimal.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Préparez-vous aussi le TCF Québec ?</div>
+        <div class="faq-a">Oui, je prépare aux deux versions : TCF Canada (Express Entry) et TCF pour l'accès à la résidence permanente au Québec (IRPQ).</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Quels sont les tarifs ?</div>
+        <div class="faq-a">Les tarifs sont personnalisés selon vos besoins et la durée du programme. Contactez-moi sur WhatsApp pour recevoir une offre adaptée.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Les cours se font-ils uniquement en ligne ?</div>
+        <div class="faq-a">Les deux sont possibles : cours en ligne via vidéo ou en présentiel pour les candidats basés à Tunis et ses environs.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Quel niveau faut-il avoir pour commencer ?</div>
+        <div class="faq-a">Tout niveau est accepté. Un test de positionnement gratuit est réalisé en début de coaching pour adapter le programme à votre point de départ.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Y a-t-il un suivi après les sessions ?</div>
+        <div class="faq-a">Oui, un accès aux ressources, corrections et conseils est maintenu entre les sessions. Vous n'êtes jamais seul dans votre préparation.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA FINAL -->
+
+<div class="cta-section">
+  <div style="position: relative; z-index: 1; max-width: 700px; margin: 0 auto;">
+    <span class="section-label">Prêt à commencer ?</span>
+    <h2 class="section-h2">Votre visa commence<br>par votre score TCF</h2>
+    <p>Chaque point de NCLC compte dans votre dossier d'immigration. Ne laissez pas l'examen décider à votre place — préparez-vous avec un expert.</p>
+    <a href="https://wa.link/g27f11" target="_blank" class="btn-white">
+      💬 Parler à Houcine sur WhatsApp
+    </a>
+    <div class="cta-contacts">
+      <a href="tel:+21697877009" class="cta-contact-item">
+        <span class="icon">📞</span> +216 97 877 009
+      </a>
+      <a href="sms:+21697877009" class="cta-contact-item">
+        <span class="icon">💬</span> SMS
+      </a>
+      <a href="mailto:hbchatnia@gmail.com" class="cta-contact-item">
+        <span class="icon">📧</span> Email
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+  <div>© 2025 H. Bchatnia – Préparation TCF Canada · Tunis, Ariana</div>
+  <div style="display:flex; gap: 1.5rem;">
+    <a href="mailto:hbchatnia@gmail.com">Contact</a>
+    <span>Mentions légales</span>
+  </div>
+</footer>
+
+<!-- WhatsApp Floating Button -->
+
+<a href="https://wa.link/g27f11" target="_blank" class="wa-float" title="Contacter sur WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.114.549 4.098 1.508 5.824L.057 23.944l6.265-1.424A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.87 9.87 0 01-5.028-1.372l-.36-.214-3.724.847.878-3.607-.236-.372A9.87 9.87 0 012.118 12C2.118 6.57 6.57 2.118 12 2.118S21.882 6.57 21.882 12 17.43 21.882 12 21.882z"/>
+  </svg>
+</a>
+
+</body>
+</html>
